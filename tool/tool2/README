@@ -1,0 +1,50 @@
+
+## Developed by Maurizio Montis (INFN Legnaro - Italy) and Jean-François DENIS (CEA - France)
+## Mails: maurizio.montis@lnl.infn.it and jfdenis@cea.fr
+
+#######################################################################################################################################
+#############################################################  README #################################################################
+#######################################################################################################################################
+
+######################################################
+############# Descriptions of the file ###############
+######################################################
+
+######## autobuild-TestScript.py #####################
+
+=> This file allows to create automaticaly a test bench application based on the ConfigFile.xls 
+
+Running operation : 1 - Extract all data from the ConfigFile.csv to put on the 2D array "ConfigFileArray" and ,on the same time, all record 
+                        on the list "ListPV"
+		    2 - Creation of the final script by copying the skeleton file with 
+		    3 - Customising of the final script :
+							- Adding of the list "ListPV" for the test of all PV connection
+				    			- Adding generic script according to the 2D array "ConfigFileArray" and remplacing 								  parameters with a dictionary
+
+######## ConfigStartSource.xls #######################
+
+=> this file is the configure file wich integrates all tests to do
+		
+comment : - For the moment I process only Ao, Ai, bo, bi , calc                => need to be improved
+	  - The name of the configure file have to start by "Configxxxxx..."   => need to be improved
+	  - The extension of the configure file have to be "*.xls"             => need to be improved
+
+
+######## Modules/Script1 #############################
+
+=> this file is a generic test program writing in python
+
+Running operation : 1 - If the "strCmdPV" field isn't empty do "caput" action 
+		    2 - If the "strRdbkPV" field isn't empty do "caget" action 	
+		    3 - Check the threshold
+	            4 - Write the result on the fileResult and on console
+
+comment : I created a name convention => '$CMD_PV', '$RDBK_PV','$SEVERITY','$CMD_VAL','$SEVERITY','$RDBK_VAL', etc....
+          I considered this name convention was generic for all generic procedure test. That why I created A dictionnary on autobuild-   
+          TestScript file.
+
+######## ExternalModules/Skeleton ###################
+
+=> this file is a model for the final test script
+
+
